@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtg4rmbgg2dbp"]
+
+[ext_resource type="PackedScene" uid="uid://4ev0wdbp3ds8" path="res://addons/VirtualJoyStick/VirtualJoyStick.tscn" id="1_lle0n"]
+[ext_resource type="Texture2D" uid="uid://c4oyk4s2cfbjj" path="res://icon.svg" id="1_tuoac"]
+[ext_resource type="Script" path="res://addons/VirtualJoyStick/test/JoyStickExample.cs" id="2_xg2eh"]
+
+[node name="Test" type="Node2D"]
+metadata/_edit_vertical_guides_ = [481.0]
+metadata/_edit_horizontal_guides_ = [269.0]
+
+[node name="Player" type="Sprite2D" parent="." node_paths=PackedStringArray("_leftJoyStick", "_rightJoyStick")]
+position = Vector2(238, 115)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_tuoac")
+script = ExtResource("2_xg2eh")
+_leftJoyStick = NodePath("../CanvasLayer/Ui/LeftJoyStick")
+_rightJoyStick = NodePath("../CanvasLayer/Ui/RightJoyStick")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Ui" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 270.0
+
+[node name="LeftJoyStick" parent="CanvasLayer/Ui" instance=ExtResource("1_lle0n")]
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -80.0
+offset_right = 80.0
+offset_bottom = -20.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="RightJoyStick" parent="CanvasLayer/Ui" instance=ExtResource("1_lle0n")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -80.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+useInputActions = false
